@@ -12,11 +12,12 @@ import com.onmoso.store.OptionData;
  * 用户设置界面
  * @author xiangguang
  * @version 1.0
+ * http://www.onmoso.com
  */
 public class ConfigScreen extends MainScreen{
 	//设置选项
-	private String[] array = {"无","震动"};
-	private ObjectChoiceField choice = new ObjectChoiceField("提示：", array);
+	private static final String[] CHOICE_ARRAY = {"无","震动"};
+	private ObjectChoiceField mChoice = new ObjectChoiceField("提示：", CHOICE_ARRAY);
 	
 	/**
 	 * 构造方法
@@ -30,13 +31,13 @@ public class ConfigScreen extends MainScreen{
 			Object obj = v.elementAt(0);
 			if(obj instanceof OptionData){
 				OptionData data = (OptionData)obj;
-				choice.setSelectedIndex(data.getType());
+				mChoice.setSelectedIndex(data.getType());
 			}
 		}
 		//设置标题
 		this.setTitle("设置");
 		//添加到屏幕
-		this.add(choice);
+		this.add(mChoice);
 		//添加分割线
 		this.add(new SeparatorField());
 	}
@@ -55,7 +56,7 @@ public class ConfigScreen extends MainScreen{
 	 * 保存设置
 	 */
 	private void doSave(){
-		int index = choice.getSelectedIndex();
+		int index = mChoice.getSelectedIndex();
 		DataStore store = new DataStore();
 		OptionData data = new OptionData();
 		data.setType(index);

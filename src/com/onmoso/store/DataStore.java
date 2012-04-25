@@ -14,8 +14,8 @@ import net.rim.device.api.system.PersistentStore;
 public class DataStore {
 
     //存放地址 iCapture.com.onmoso.store.DataStore._fileName.long.key
-    private  long _fileName = 0xe8158e7018324a54L;
-	private Vector list;
+    private long mFileName = 0xe8158e7018324a54L;
+	private Vector mList;
 	private PersistentObject objectList;
 	
     /**
@@ -24,14 +24,14 @@ public class DataStore {
      */
     public DataStore()
     {
-    	objectList = PersistentStore.getPersistentObject(_fileName);
+    	objectList = PersistentStore.getPersistentObject(mFileName);
 		Object myList = objectList.getContents();
 		if(myList == null || !(myList instanceof Vector)){
 			objectList.setContents(new Vector());
 			objectList.commit();
-			list = (Vector)objectList.getContents();
+			mList = (Vector)objectList.getContents();
 		}else{
-			list = (Vector)myList;
+			mList = (Vector)myList;
 		}
     }
     
@@ -40,35 +40,35 @@ public class DataStore {
 	 * 
 	 */
 	public Vector getList(){
-		return this.list;
+		return this.mList;
 	}
 
 	/**
      * 返回对应索引的数据
-     * @param index <description>
-     * @return <description>
+     * @param index 
+     * @return 
      */
     public boolean setElementAt(Object data,int index)
     {
         try
         {
-            if(this.list!=null)
+            if(this.mList!=null)
             {
-                int size = this.list.size();
+                int size = this.mList.size();
                 if(index<size)
-                    this.list.setElementAt(data,index);
+                    this.mList.setElementAt(data,index);
                 else
-                    this.list.addElement(data);
+                    this.mList.addElement(data);
                     
-                if (this.list.size() < this.list.capacity())
-                    this.list.trimToSize();
+                if (this.mList.size() < this.mList.capacity())
+                    this.mList.trimToSize();
                 objectList.commit();                 
                 return true;
             }
         }
         catch(Exception e)
         {
-            System.err.println("DataStore addElement:"+e.toString());
+            System.err.println("DataStore addElement :"+e.toString());
         }
         return false;
     }

@@ -9,6 +9,7 @@ import com.onmoso.utils.SysMenuItem;
  * EntryPoint.java
  * @author xiangguang
  * @version 1.0
+ * http://www.onmoso.com
  */
 public class EntryPoint extends UiApplication{
     /**
@@ -18,9 +19,9 @@ public class EntryPoint extends UiApplication{
     public static void main(String[] args)
     {  
         // Create a new instance of the application and make the currently
-        // running thread the application's event dispatch thread.
     	if(args != null && args.length > 0 && args[0].equals("iCaptureEntryPoint")){
         	EntryPoint theApp = new EntryPoint();       
+        	// running thread the application's event dispatch thread.
             theApp.enterEventDispatcher();
     	}else{ 
     		SysMenuItem item = new SysMenuItem();

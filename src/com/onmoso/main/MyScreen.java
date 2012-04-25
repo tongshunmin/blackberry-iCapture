@@ -29,16 +29,14 @@ import com.onmoso.utils.Tools;
  * @version 1.0
  */
 public class MyScreen extends FullScreen{
-	
-	private final static int MARGIN = 45;
 	//实例化一个管理器
-	private FlowFieldManager _v = new FlowFieldManager(FlowFieldManager.VERTICAL_SCROLL|VERTICAL_SCROLLBAR|FIELD_HCENTER);
+	private FlowFieldManager mFlowManager = new FlowFieldManager(FlowFieldManager.VERTICAL_SCROLL|VERTICAL_SCROLLBAR|FIELD_HCENTER);
 	
-	private int dw = Display.getWidth();
-	private int dh = Display.getHeight();
+	private int mDisWidth = Display.getWidth();
+	private int mDisHeight = Display.getHeight();
 	
-	private Bitmap newbit = new Bitmap(dw - MARGIN,dh-MARGIN);
-	private Bitmap bit = new Bitmap(dw,dh);
+	private Bitmap mNewBitmap = new Bitmap(mDisWidth - Config.MARGIN,mDisHeight - Config.MARGIN);
+	private Bitmap mBitmap = new Bitmap(mDisWidth,mDisHeight);
 	
 	/**
 	 * 构造方法
@@ -55,8 +53,8 @@ public class MyScreen extends FullScreen{
 		//添加到屏幕
 		this.add(new BannerField(Config.APP_NAME,USE_ALL_WIDTH));
 		//设置外边距
-        _v.setMargin(10,0,0,0);
-        this.add(_v);
+		mFlowManager.setMargin(10,0,0,0);
+        this.add(mFlowManager);
         //设置背景颜色
         this.setBackground(BackgroundFactory.createSolidBackground(0x272727));
 	}
@@ -99,11 +97,11 @@ public class MyScreen extends FullScreen{
 								this.cancel();
 								break;
 							case Characters.LATIN_SMALL_LETTER_E:
-								Tools.doSend(bit);
+								Tools.doSend(mBitmap);
 								this.cancel();
 								break;
 							case Characters.LATIN_SMALL_LETTER_S:
-								Tools.doSave(bit);
+								Tools.doSave(mBitmap);
 								this.cancel();
 								break;
 							case Characters.LATIN_SMALL_LETTER_C:
@@ -118,10 +116,10 @@ public class MyScreen extends FullScreen{
 					int answer = d.doModal();
 					switch(answer){
 					case 0:
-						Tools.doSend(bit);
+						Tools.doSend(mBitmap);
 						break;
 					case 1: 
-						Tools.doSave(bit);
+						Tools.doSave(mBitmap);
 						break;
 					case 2:
 						break;
@@ -135,8 +133,8 @@ public class MyScreen extends FullScreen{
 	 * 截屏
 	 */
 	private void doShot(){
-		net.rim.device.api.system.Display.screenshot(bit);
-		doAdd(bit);
+		net.rim.device.api.system.Display.screenshot(mBitmap);
+		doAdd(mBitmap);
 	}
 	
 	/**
@@ -144,21 +142,21 @@ public class MyScreen extends FullScreen{
 	 * @param bit 图片
 	 */
 	private void doAdd(Bitmap bit){
-		_v.deleteAll();
-		bit.scaleInto(newbit, Bitmap.FILTER_BOX);
-		_v.add(new BitmapField(newbit,FOCUSABLE|FIELD_HCENTER));
+		mFlowManager.deleteAll();
+		bit.scaleInto(mNewBitmap, Bitmap.FILTER_BOX);
+		mFlowManager.add(new BitmapField(mNewBitmap,FOCUSABLE|FIELD_HCENTER));
 	}
 	
 	protected MenuItem send = new MenuItem("发送邮件(E)",10,10){
 		public void run(){
-			Tools.doSend(bit);
+			Tools.doSend(mBitmap);
 		}
 	}; 
 	
 	protected MenuItem save = new MenuItem("保存截图(S)",20,10){
 		public void run(){
-			Tools.doSave(bit);
-			Dialog.inform("保存成功");
+			Tools.doSave(mBitmap);
+			Dialog.inform(Config.SAVE_SUCCESS);
 		}
 	};
 	
@@ -214,11 +212,11 @@ public class MyScreen extends FullScreen{
 			doAbout();
 			break;
 		case Characters.LATIN_SMALL_LETTER_S:
-			Tools.doSave(bit);
-			Dialog.inform("保存成功");
+			Tools.doSave(mBitmap);
+			Dialog.inform(Config.SAVE_SUCCESS);
 			break;
 		case Characters.LATIN_SMALL_LETTER_E:
-			Tools.doSend(bit);
+			Tools.doSend(mBitmap);
 			break;
 		default:
 			return super.keyChar(c, status, time);

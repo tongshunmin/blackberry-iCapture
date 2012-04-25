@@ -10,10 +10,11 @@ import com.onmoso.utils.Config;
  * 自定义BannerField控件
  * @author xiangguang
  * @version 1.0
+ * http://www.onmoso.com
  */
 public class BannerField extends LabelField{
 	//显示文字
-	private String text;
+	private String mText;
 	
 	/**
 	 * 构造方法
@@ -22,7 +23,7 @@ public class BannerField extends LabelField{
 	 */
 	public BannerField(String text,long l){
 		super(text,l);
-		this.text = text;
+		this.mText = text;
 		this.setFont(Config.F_20);
 	}
 	
@@ -39,7 +40,7 @@ public class BannerField extends LabelField{
 		//设置颜色为白色
 		g.setColor(Color.WHITE);
 		//绘制Banner显示文字
-		g.drawText(text, (w - Config.F_20.getAdvance(text))>>1, 0);
+		g.drawText(mText, (w - Config.F_20.getAdvance(mText))>>1, 0);
 	}
 	
 	/**
