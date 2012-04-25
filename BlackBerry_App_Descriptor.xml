@@ -1,0 +1,24 @@
+<Properties ModelVersion="1.1.2">
+  <General Title="iCapture" Version="1.0.1" Vendor="onmoso.com" Description=""/>
+  <Application Type="BlackBerry Application" MainMIDletName="" MainArgs="" HomeScreenPosition="0" StartupTier="7" IsSystemModule="true" IsAutostartup="true"/>
+  <Resources hasTitleResource="false" TitleResourceBundleName="" TitleResourceBundleRelativePath="" TitleResourceBundleClassName="" TitleResourceBundleKey="" DescriptionId="">
+    <Icons/>
+  </Resources>
+  <Compile OutputCompilerMessages="false" ConvertImages="false" CreateWarningForNoExportedRoutine="true" CompressResources="false" AliasList="">
+    <PreprocessorDefines/>
+  </Compile>
+  <Packaging OutputFileName="iCapture" OutputFolder="deliverables" PreBuildStep="" PostBuildStep="" CleanStep="" GenerateALXFile="true">
+    <AlxFiles/>
+  </Packaging>
+  <HiddenProperties>
+    <ClassProtection/>
+    <PackageProtection/>
+  </HiddenProperties>
+  <AlternateEntryPoints>
+    <AlternateEntryPoint Title="iCapture" MainMIDletName="" ArgumentsForMain="iCaptureEntryPoint" HomeScreenPosition="0" StartupTier="7" IsSystemModule="false" IsAutostartup="false" hasTitleResource="false" TitleResourceBundleKey="" TitleResourceBundleName="" TitleResourceBundleClassName="" TitleResourceBundleRelativePath="">
+      <Icons>
+        <Icon CanonicalFileName="res/logo.png" IsFocus="false"/>
+      </Icons>
+    </AlternateEntryPoint>
+  </AlternateEntryPoints>
+</Properties>

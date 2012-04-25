@@ -1,0 +1,31 @@
+<loader version="1.0">
+	<application id="iCapture">
+		<name >
+			iCapture
+		</name>
+		<description >
+			
+		</description>
+		<version >
+			1.0.1
+		</version>
+		<vendor >
+			onmoso.com
+		</vendor>
+		<copyright >
+			Copyright (c) 2012 onmoso.com
+		</copyright>
+		<fileset Java="1.49" _blackberryVersion="[5.0.0)">
+			<directory >
+				5.0.0
+			</directory>
+			<files >
+				iCapture.cod
+
+			</files>
+
+		</fileset>
+
+	</application>
+
+</loader>
